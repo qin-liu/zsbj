@@ -58,32 +58,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>1.0.19</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<!-- utils -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3.version}</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.7</version>
-		</dependency>
-		<!--dependency>
-			<groupId>net.sourceforge.javacsv</groupId>
-			<artifactId>javacsv</artifactId>
-			<version>2.0</version>
-		</dependency-->
+
 		<!--Mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -115,12 +91,6 @@
 			<artifactId>mapper</artifactId>
 			<version>${mapper.version}</version>
 		</dependency>
-		<!-- 写excel -->
-		<!--dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-scratchpad</artifactId>
-			<version>3.6</version>
-		</dependency-->
 	</dependencies>
 	<build>
 		<plugins>
@@ -146,13 +116,13 @@
 		<profile>
 			<id>test</id>
 			<properties>
-				<logging.path>/data0/wumeijie</logging.path>
+				<logging.path>/data0/zsbj</logging.path>
 			</properties>
 		</profile>
 		<profile>
 			<id>product</id>
 			<properties>
-				<logging.path>/data0/wumeijie</logging.path>
+				<logging.path>/data0/zsbj</logging.path>
 			</properties>
 		</profile>
 	</profiles>
