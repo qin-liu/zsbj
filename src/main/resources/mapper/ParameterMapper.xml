@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.zsbj.dao.RuleRepositorysMapper">
-    <resultMap id="RuleRepositoryResultMapper" type="net.zsbj.model.RuleRepository">
+<mapper namespace="net.zsbj.dao.ParameterMapper">
+    <resultMap id="ParameterResultMapper" type="net.zsbj.model.Parameter">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="unit_measure" jdbcType="VARCHAR" property="unitMeasure" />
+        <result column="data_type" jdbcType="VARCHAR" property="dataType" />
+        <result column="symbol" jdbcType="VARCHAR" property="symbol" />
         <result column="description" jdbcType="VARCHAR" property="description" />
     </resultMap>
-
     <delete id="removeList" parameterType="java.util.List">
-        DELETE FROM tb_rule_repository WHERE id IN
+        DELETE FROM tb_parameter WHERE id IN
         <foreach collection="list" item="id"  index="index" open="(" close=")" separator=",">
             #{id}
         </foreach>

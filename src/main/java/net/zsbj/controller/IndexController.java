@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/1")
-public class OrderController {
+@RequestMapping("/zsbj")
+public class IndexController {
 
 
 	@Autowired
@@ -24,7 +24,6 @@ public class OrderController {
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	@ResponseBody
 	public Result test(Integer platformId, Integer merchantId, String orderSn) {
-		List<RuleRepository> list = ruleRepositoryService.findRuleRepositoryList();
-		return Result.success(list);
+		return Result.success("");
 	}
 }

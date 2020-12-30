@@ -3,16 +3,14 @@ package net.zsbj.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
- * 知识库
+ * 知识图参数
  */
 @Data
 @Entity
-@Table(name = "tb_rule_repository")
-public class RuleRepository implements Serializable {
-
+@Table(name = "tb_parameter")
+public class Parameter {
     /**
      * 唯一id
      */
@@ -22,15 +20,32 @@ public class RuleRepository implements Serializable {
     private Integer id;
 
     /**
-     * 知识 库                                  名称
+     * 参数名称
      */
     @Column(name = "name")
     private String name;
 
     /**
-     * 知识库说明
+     * 参数说明
      */
     @Column(name = "description")
     private String description;
 
+    /**
+     * 度量单位
+     */
+    @Column(name = "unit_measure")
+    private String unitMeasure;
+
+    /**
+     * 数据类型
+     */
+    @Column(name = "data_type")
+    private String dataType;
+
+    /**
+     * 参数代号
+     */
+    @Column(name = "symbol")
+    private String symbol;
 }

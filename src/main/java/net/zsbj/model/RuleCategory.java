@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * 知识库
+ * 知识类别
  */
 @Data
 @Entity
-@Table(name = "tb_rule_repository")
-public class RuleRepository implements Serializable {
-
+@Table(name = "tb_rule_category")
+public class RuleCategory implements Serializable {
     /**
      * 唯一id
      */
@@ -22,15 +21,18 @@ public class RuleRepository implements Serializable {
     private Integer id;
 
     /**
-     * 知识 库                                  名称
+     * 知识类别名称
      */
-    @Column(name = "name")
     private String name;
 
     /**
-     * 知识库说明
+     * 知识类别说明
      */
-    @Column(name = "description")
     private String description;
 
+    /**
+     * 所属知识库id
+     */
+    @Column(name = "rule_repository_id")
+    private Integer ruleRepositoryId;
 }

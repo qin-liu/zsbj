@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.zsbj.dao.RuleMapper">
+	<resultMap id="RuleResultMap" type="net.zsbj.model.Rule">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="rule_category_id" jdbcType="INTEGER" property="ruleCategoryId" />
+		<result column="rule_repository_id" jdbcType="INTEGER" property="ruleRepositoryId" />
+	</resultMap>
+
+
+	<delete id="removeList" parameterType="java.util.List">
+		DELETE FROM tb_rule WHERE id IN
+		<foreach collection="list" item="id"  index="index" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+ 	</delete>
+</mapper>
