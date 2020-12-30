@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "c02ac365-5be9-4ec5-9789-6fe7a7a68a4a",
+		"name": "知识编辑API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "知识库",
+			"item": [
+				{
+					"name": "ruleRepository_add",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"fault1\",\r\n    \"description\": \"说明\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepository",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepository"
+							]
+						},
+						"description": "添加知识库"
+					},
+					"response": []
+				},
+				{
+					"name": "ruleRepository_get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepository/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepository",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleRepository_get_page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepositories?pageNum=1&pageSize=3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepositories"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleRepository_delete_by_id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepository/delete/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepository",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleRepository_delete_list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepository/delete?ids=2,3,4,5,6,7,8",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepository",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "2,3,4,5,6,7,8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleRepository_update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 9,\r\n    \"name\": \"abc\",\r\n    \"description\": \"description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleRepository/update",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleRepository",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "故障",
+			"item": [
+				{
+					"name": "fault_add",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"fault1\",\r\n    \"code\": \"faultcode\",\r\n    \"faultCategory\": \"类别1\",\r\n    \"faultLevel\": 1,\r\n    \"description\": \"说明\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fault_get_page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault?pageNum=1&pageSize=3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fault_get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault/7",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fault_update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 8,\r\n    \"name\": \"修改修改\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault/update",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fault_delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault/delete/8",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault",
+								"delete",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fualt_delete_list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/fault/delete?ids=5,6,7",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"fault",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "5,6,7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "参数",
+			"item": [
+				{
+					"name": "parameter_add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"参数1\",\r\n    \"unitMeasure\": \"米\",\r\n    \"dataType\": \"double\",\r\n    \"symbol\": \"a\",\r\n    \"description\": \"description\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parameter_get_page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter?pageNum=2&pageSize=2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "2"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parameter_get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parameter_update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 4,\r\n        \"name\": \"参数2\",\r\n        \"description\": \"description2\",\r\n        \"unitMeasure\": \"米2\",\r\n        \"dataType\": \"double2\",\r\n        \"symbol\": \"a2\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter/update",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parameter_delete_by_id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter/delete/4",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "parameter_delete_list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/parameter/delete?ids=1,2,3,4,5",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"parameter",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1,2,3,4,5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "知识类别",
+			"item": [
+				{
+					"name": "ruleCategory_get_by_repositoryId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"fault1\",\r\n    \"code\": \"faultcode\",\r\n    \"faultCategory\": \"类别1\",\r\n    \"faultLevel\": 1,\r\n    \"description\": \"说明\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8080/zsbj/ruleCategories/9",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"zsbj",
+								"ruleCategories",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
