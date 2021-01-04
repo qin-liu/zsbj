@@ -1,7 +1,9 @@
 package net.zsbj.controller;
 
+import com.github.pagehelper.PageInfo;
 import net.zsbj.model.RuleRepository;
 import net.zsbj.service.intf.RuleRepositoryService;
+import net.zsbj.utils.ParamParser;
 import net.zsbj.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,8 @@ public class RuleRepositoryController {
     public Result findRuleRepositoryList(@RequestParam(value = "pageNum") Integer pageNum,
                                          @RequestParam(value = "pageSize") Integer pageSize) {
         List<RuleRepository> list = ruleRepositoryService.findRuleRepositoryList(pageNum, pageSize);
-        return Result.success(list);
+        PageInfo<RuleRepository> pageInfo = new PageInfo<>(list);
+        return Result.success(pageInfo);
     }
 
     /**
@@ -76,7 +79,7 @@ public class RuleRepositoryController {
     @ResponseBody
     public Result remove(@PathVariable("id") Integer id) {
         ruleRepositoryService.remove(id);
-        return Result.success("");
+        return Result.success(id);
     }
 
     /**
@@ -86,14 +89,8 @@ public class RuleRepositoryController {
     @RequestMapping(value = "/ruleRepository/delete", method = RequestMethod.POST)
     @ResponseBody
     public Result removeList(@RequestParam("ids") String ids) {
-        String[] idsString = ids.split(",");
-        List<Integer> idInt = new ArrayList<>();
-        for (String idString : idsString
-             ) {
-            Integer id = Integer.valueOf(idString);
-            idInt.add(id);
-        }
-        ruleRepositoryService.removeList(idInt);
-        return Result.success("");
+        List<Integer> idList = ParamParser.parserParam(ids);
+        ruleRepositoryService.removeList(idList);
+        return Result.success(idList);
     }
 }

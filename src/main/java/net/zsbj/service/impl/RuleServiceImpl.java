@@ -20,6 +20,12 @@ public class RuleServiceImpl implements RuleService {
 		PageHelper.startPage(pageNum, pageSize);
 		return ruleMapper.selectAll();
 	}
+
+	public List<Rule> findByCategoryId(Integer categoryId) {
+		return ruleMapper.selectByRuleCategoryId(categoryId);
+	}
+
+
 	public Rule findById(Integer id)
 	{
 		return ruleMapper.selectByPrimaryKey(id);
@@ -31,7 +37,7 @@ public class RuleServiceImpl implements RuleService {
 
 	public void modify(Rule r)
 	{
-		ruleMapper.updateByPrimaryKey(r);
+		ruleMapper.updateByPrimaryKeySelective(r);
 	}
 
 	@Transactional
@@ -45,5 +51,8 @@ public class RuleServiceImpl implements RuleService {
 	{
 		ruleMapper.removeList(idList);
 	}
+
+
+
 	
 }

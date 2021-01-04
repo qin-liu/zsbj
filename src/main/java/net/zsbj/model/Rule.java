@@ -22,6 +22,19 @@ public class Rule implements Serializable {
 	@GeneratedValue(strategy= GenerationType.IDENTITY, generator="Mysql")
 	@Column(name = "id")
 	private Integer id;
+
+	/**
+	 * 名称
+	 */
+	@Column(name = "name")
+	private String name;
+
+	/**
+	 * 编码
+	 */
+	@Column(name = "rule_code")
+	private String ruleCode;
+
 	/**
 	 * 类别id
 	 */

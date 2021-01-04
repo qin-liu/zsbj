@@ -1,9 +1,11 @@
 package net.zsbj.controller;
 
+import com.github.pagehelper.PageInfo;
 import net.zsbj.model.RuleCategory;
 import net.zsbj.model.RuleRepository;
 import net.zsbj.service.intf.RuleCategoryService;
 import net.zsbj.service.intf.RuleRepositoryService;
+import net.zsbj.utils.ParamParser;
 import net.zsbj.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,8 @@ public class RuleCategoryController {
     @ResponseBody
     public Result findRuleCategoryListInRuleRepository(@PathVariable(value = "repositoryId") Integer repositoryId) {
         List<RuleCategory> list = ruleCategoryService.findRuleCategoryListInRepository(repositoryId);
-        return Result.success(list);
+        PageInfo<RuleCategory> pageInfo = new PageInfo<>(list);
+        return Result.success(pageInfo);
     }
 
     /**
@@ -76,7 +79,7 @@ public class RuleCategoryController {
     @ResponseBody
     public Result remove(@PathVariable("id") Integer id) {
         ruleCategoryService.remove(id);
-        return Result.success("");
+        return Result.success(id);
     }
 
     /**
@@ -87,14 +90,8 @@ public class RuleCategoryController {
     @RequestMapping(value = "/ruleCategory/delete", method = RequestMethod.POST)
     @ResponseBody
     public Result removeList(@RequestParam("ids") String ids) {
-        String[] idsString = ids.split(",");
-        List<Integer> idInt = new ArrayList<Integer>();
-        for (String idString : idsString
-        ) {
-            Integer id = Integer.valueOf(idString);
-            idInt.add(id);
-        }
-        ruleCategoryService.removeList(idInt);
-        return Result.success("");
+        List<Integer> idList = ParamParser.parserParam(ids);
+        ruleCategoryService.removeList(idList);
+        return Result.success(idList);
     }
 }

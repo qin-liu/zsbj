@@ -1,8 +1,10 @@
 package net.zsbj.controller;
 
-import net.zsbj.model.Fault;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import net.zsbj.model.Parameter;
 import net.zsbj.service.intf.ParameterService;
+import net.zsbj.utils.ParamParser;
 import net.zsbj.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +32,8 @@ public class ParameterController {
     public Result findRuleRepositoryList(@RequestParam(value = "pageNum") Integer pageNum,
                                          @RequestParam(value = "pageSize") Integer pageSize) {
         List<Parameter> list = parameterService.findParameterList(pageNum, pageSize);
-        return Result.success(list);
+        PageInfo<Parameter> pageInfo = new PageInfo<>(list);
+        return Result.success(pageInfo);
     }
 
     /**
@@ -88,14 +91,8 @@ public class ParameterController {
     @RequestMapping(value = "/parameter/delete", method = RequestMethod.POST)
     @ResponseBody
     public Result removeList(@RequestParam("ids") String ids) {
-        String[] idsString = ids.split(",");
-        List<Integer> idInt = new ArrayList<Integer>();
-        for (String idString : idsString
-        ) {
-            Integer id = Integer.valueOf(idString);
-            idInt.add(id);
-        }
-        parameterService.removeList(idInt);
-        return Result.success(idInt);
+        List<Integer> idList = ParamParser.parserParam(ids);
+        parameterService.removeList(idList);
+        return Result.success(idList);
     }
 }

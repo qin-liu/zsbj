@@ -32,14 +32,14 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:8080/zsbj/ruleRepository",
+							"raw": "127.0.0.1:8090/zsbj/ruleRepository",
 							"host": [
 								"127",
 								"0",
 								"0",
 								"1"
 							],
-							"port": "8080",
+							"port": "8090",
 							"path": [
 								"zsbj",
 								"ruleRepository"
@@ -55,14 +55,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "127.0.0.1:8080/zsbj/ruleRepository/1",
+							"raw": "127.0.0.1:8090/zsbj/ruleRepository/1",
 							"host": [
 								"127",
 								"0",
 								"0",
 								"1"
 							],
-							"port": "8080",
+							"port": "8090",
 							"path": [
 								"zsbj",
 								"ruleRepository",
@@ -580,18 +580,256 @@
 							}
 						},
 						"url": {
-							"raw": "127.0.0.1:8080/zsbj/ruleCategories/9",
+							"raw": "127.0.0.1:8090/zsbj/ruleCategories/9",
 							"host": [
 								"127",
 								"0",
 								"0",
 								"1"
 							],
-							"port": "8080",
+							"port": "8090",
 							"path": [
 								"zsbj",
 								"ruleCategories",
 								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleCategory_add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"category1111\",\r\n    \"description\": \"ddddd\",\r\n    \"ruleRepositoryId\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/ruleCategory",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"ruleCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleCategory_delete_by_id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/ruleCategory/delete/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"ruleCategory",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ruleCategory_delete_list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/ruleCategory/delete?ids=2,3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"ruleCategory",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "2,3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "知识",
+			"item": [
+				{
+					"name": "rule_add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"知识1\",\r\n    \"code\": \"ZS1\",\r\n    \"ruleCategoryId\": 9,\r\n    \"ruleRepositoryId\": 1,\r\n    \"isValid\": \"1\",\r\n    \"version\": \"version\",\r\n    \"ruleCode\": \"ruleCode1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/rule",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"rule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rule_get_by_ruleCategoryId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/rule/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"rule",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rule_get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/rule/6",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"rule",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rule_delete_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rule_delete_list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/rule/delete?ids=7,8,9,10",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"rule",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "7,8,9,10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rule_update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 7,\r\n    \"name\": \"知识11111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8090/zsbj/rule/update",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"zsbj",
+								"rule",
+								"update"
 							]
 						}
 					},

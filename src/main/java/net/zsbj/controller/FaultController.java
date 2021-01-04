@@ -1,18 +1,19 @@
 package net.zsbj.controller;
 
+import com.github.pagehelper.PageInfo;
 import net.zsbj.model.Fault;
 import net.zsbj.service.intf.FaultService;
+import net.zsbj.utils.ParamParser;
 import net.zsbj.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/zsbj")
 public class FaultController {
+
     @Autowired
     FaultService faultService;
 
@@ -22,12 +23,13 @@ public class FaultController {
      * @param pageSize
      * @return
      */
-    @RequestMapping(value = "/fault", method = RequestMethod.GET)
+    @RequestMapping(value = "/faults", method = RequestMethod.GET)
     @ResponseBody
     public Result findRuleRepositoryList(@RequestParam(value = "pageNum") Integer pageNum,
                                          @RequestParam(value = "pageSize") Integer pageSize) {
         List<Fault> list = faultService.findFaultList(pageNum, pageSize);
-        return Result.success(list);
+        PageInfo<Fault> pageInfo = new PageInfo<>(list);
+        return Result.success(pageInfo);
     }
 
     /**
@@ -74,7 +76,7 @@ public class FaultController {
     @ResponseBody
     public Result remove(@PathVariable("id") Integer id) {
         faultService.remove(id);
-        return Result.success("");
+        return Result.success(id);
     }
 
     /**
@@ -85,14 +87,7 @@ public class FaultController {
     @RequestMapping(value = "/fault/delete", method = RequestMethod.POST)
     @ResponseBody
     public Result removeList(@RequestParam("ids") String ids) {
-        String[] idsString = ids.split(",");
-        List<Integer> idInt = new ArrayList<>();
-        for (String idString : idsString
-        ) {
-            Integer id = Integer.valueOf(idString);
-            idInt.add(id);
-        }
-        faultService.removeList(idInt);
+        faultService.removeList(ParamParser.parserParam(ids));
         return Result.success("");
     }
 

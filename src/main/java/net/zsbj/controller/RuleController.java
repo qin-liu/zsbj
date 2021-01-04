@@ -1,14 +1,15 @@
 package net.zsbj.controller;
 
+import com.github.pagehelper.PageInfo;
 import net.zsbj.model.Rule;
 import net.zsbj.service.intf.RuleService;
 import net.zsbj.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import net.zsbj.utils.ParamParser;
 
 @Controller
 @RequestMapping("/zsbj")
@@ -19,15 +20,24 @@ public class RuleController {
     @RequestMapping(value = "/rules", method = RequestMethod.GET)
 
     @ResponseBody
-    public Result findRuleRepositoryList(@RequestParam(value = "pageNum") Integer pageNum,
-                                         @RequestParam(value = "pageSize") Integer pageSize) {
+    public Result findRuleList(@RequestParam(value = "pageNum") Integer pageNum,
+                               @RequestParam(value = "pageSize") Integer pageSize) {
         List<Rule> list = ruleService.findRuleList(pageNum, pageSize);
+        PageInfo<Rule> pageInfo = new PageInfo<>(list);
+        return Result.success(pageInfo);
+    }
+
+    @RequestMapping(value = "/rules/{ruleCategoryId}", method = RequestMethod.GET)
+
+    @ResponseBody
+    public Result findRuleListByCategoryId(@PathVariable(value = "ruleCategoryId") Integer ruleCategoryId) {
+        List<Rule> list = ruleService.findByCategoryId(ruleCategoryId);
         return Result.success(list);
     }
 
     @RequestMapping(value = "/rule/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Result findRuleRepositoryById(@PathVariable("id") Integer id) {
+    public Result findRuleById(@PathVariable("id") Integer id) {
         Rule r = ruleService.findById(id);
         return Result.success(r);
     }
@@ -41,7 +51,7 @@ public class RuleController {
 
     @RequestMapping(value = "/rule/update", method = RequestMethod.POST)
     @ResponseBody
-    public Result modify(Rule r) {
+    public Result modify(@RequestBody Rule r) {
         ruleService.modify(r);
         return Result.success("");
     }
@@ -50,7 +60,7 @@ public class RuleController {
     @ResponseBody
     public Result remove(@PathVariable("id") Integer id) {
         ruleService.remove(id);
-        return Result.success("");
+        return Result.success(id);
     }
 
     /**
@@ -61,14 +71,7 @@ public class RuleController {
     @RequestMapping(value = "/rule/delete", method = RequestMethod.POST)
     @ResponseBody
     public Result removeList(@RequestParam("ids") String ids) {
-        String[] idsString = ids.split(",");
-        List<Integer> idInt = new ArrayList<Integer>();
-        for (String idString : idsString
-        ) {
-            Integer id = Integer.valueOf(idString);
-            idInt.add(id);
-        }
-        ruleService.removeList(idInt);
+        ruleService.removeList(ParamParser.parserParam(ids));
         return Result.success("");
     }
 }

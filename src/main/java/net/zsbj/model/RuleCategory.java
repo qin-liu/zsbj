@@ -23,11 +23,13 @@ public class RuleCategory implements Serializable {
     /**
      * 知识类别名称
      */
+    @Column(name = "name")
     private String name;
 
     /**
      * 知识类别说明
      */
+    @Column(name = "description")
     private String description;
 
     /**

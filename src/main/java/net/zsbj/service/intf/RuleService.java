@@ -14,4 +14,6 @@ public interface RuleService {
     public void modify(Rule r);
     public void remove(Integer id);
     public void removeList(List<Integer> idList);
+
+    public List<Rule> findByCategoryId(Integer categoryId);
 }

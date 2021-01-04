@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/zsbj")
 public class IndexController {
@@ -26,4 +24,5 @@ public class IndexController {
 	public Result test(Integer platformId, Integer merchantId, String orderSn) {
 		return Result.success("");
 	}
+
 }

@@ -8,7 +8,7 @@
         <result column="rule_repository_id" jdbcType="VARCHAR" property="ruleRepositoryId" />
     </resultMap>
     <delete id="removeList" parameterType="java.util.List">
-        DELETE FROM tb_parameter WHERE id IN
+        DELETE FROM tb_rule_category WHERE id IN
         <foreach collection="list" item="id"  index="index" open="(" close=")" separator=",">
             #{id}
         </foreach>
